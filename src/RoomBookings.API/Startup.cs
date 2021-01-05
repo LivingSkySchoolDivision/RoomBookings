@@ -53,10 +53,15 @@ namespace RoomBookings.API
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RoomBookings.API v1"));
             }
 
+            if (HostedInContainer)
+            {
+                Console.WriteLine("We appear to be running in a container");
+            }
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            
+
             app.UseCors("Open");
 
             app.UseAuthorization();
