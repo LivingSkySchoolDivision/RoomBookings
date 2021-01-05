@@ -33,6 +33,10 @@ namespace RoomBookings.API
         {
 
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader());
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RoomBookings.API", Version = "v1" });
@@ -52,6 +56,8 @@ namespace RoomBookings.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            
+            app.UseCors("Open");
 
             app.UseAuthorization();
 
