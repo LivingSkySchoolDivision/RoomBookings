@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace LivingSky.RoomBookings.Data
+namespace LivingSky.RoomBookings
 {
     public interface IRepository<T> where T : IGUIDable
     {

@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LivingSky.RoomBookings;
+using LivingSky.RoomBookings.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -41,6 +43,10 @@ namespace RoomBookings.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RoomBookings.API", Version = "v1" });
             });
+            
+            services.AddScoped<MongoDbConnection>();
+            services.AddScoped<IRepository<Room>, MongoRepository<Room>>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
