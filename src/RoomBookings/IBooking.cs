@@ -11,6 +11,5 @@ namespace LivingSky.RoomBookings
         public string ShortDescription { get; set; }
         public string Details { get; set; }
         public string Requestor { get; set; }
-
     }
 }
