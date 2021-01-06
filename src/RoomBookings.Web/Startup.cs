@@ -15,9 +15,14 @@ namespace RoomBookings.Web
 {
     public class Startup
     {
+        private bool HostedInContainer => Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER") == "true";
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            Configuration = new ConfigurationBuilder()
+                .AddConfiguration(configuration)
+                .AddEnvironmentVariables()
+                .Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -43,6 +48,11 @@ namespace RoomBookings.Web
                 app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+            }
+            
+            if (HostedInContainer)
+            {
+                Console.WriteLine("We appear to be running in a container");
             }
 
             app.UseHttpsRedirection();
