@@ -1,8 +1,8 @@
 using System;
 
-namespace LivingSky.RoomBookings 
+namespace LivingSky.RoomBookings.Bookings
 {
-    public class WeeklyBooking : IBooking, IGUIDable
+    public interface IBooking 
     {
         public DateTime SeriesStartsDate { get; set; }
         public DateTime SeriesEndsDate { get; set; }
@@ -11,6 +11,5 @@ namespace LivingSky.RoomBookings
         public string ShortDescription { get; set; }
         public string Details { get; set; }
         public string Requestor { get; set; }
-        public Guid Id { get; set; }
     }
 }

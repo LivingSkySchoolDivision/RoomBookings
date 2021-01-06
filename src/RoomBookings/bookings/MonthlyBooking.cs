@@ -1,6 +1,6 @@
 using System;
 
-namespace LivingSky.RoomBookings 
+namespace LivingSky.RoomBookings.Bookings
 {
     public class MonthlyBooking : IBooking, IGUIDable
     {
